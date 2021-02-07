@@ -1,0 +1,127 @@
+<script src="table-reservations.component.ts"></script>
+<div class="container common-margin-top common-margin-bottom">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-heading">
+                        <div class="row">
+                            <div class="col-lg-12" style="text-align: center">
+                                <h3 style="margin-bottom: 0px; margin-top: 5px">Reserve Your Table</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--search bar-->
+                    <mat-card class="custom-card-body">
+                        <form [formGroup]="searchForm">
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Pax Count</mat-label>
+                                            <input matInput placeholder="Your Pax Count Here" formControlName="paxCount">
+                                            <small style="color: red" *ngIf="searchForm.get('paxCount').touched && searchForm.get('paxCount').invalid">
+                                                <small *ngIf="searchForm.get('paxCount').errors.required">Pax Count is Required*</small>
+                                                <small *ngIf="searchForm.get('paxCount').errors.max">Pax Count Should be less than 10</small>
+                                            </small>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Choose a date</mat-label>
+                                            <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate">
+                                            <small style="color: red" *ngIf="searchForm.get('date').touched && searchForm.get('date').invalid">
+                                                <small *ngIf="searchForm.get('date').errors.required">Please Select Preference Date Here*</small>
+
+                                            </small>
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker touchUi #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Select A Time Slot</mat-label>
+                                            <mat-select id="timeSlot" name="timeSlot" formControlName="timeSlot">
+                                                <mat-option *ngFor="let timeSlot of timeSlots"  value="{{timeSlot}}">
+                                                    {{timeSlot}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <small style="color: red" *ngIf="searchForm.get('timeSlot').touched && searchForm.get('timeSlot').invalid">
+                                                <small *ngIf="searchForm.get('timeSlot').errors.required">Please Select Preference Time Here*</small>
+
+                                            </small>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12" style="text-align: center">
+                                        <button mat-raised-button color="primary" type="button" (click)="searchAvailability()" [disabled]="searchForm.invalid">Search</button>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </form>
+                    </mat-card>
+                </div>
+            </div>
+            <!--Tables view-->
+<!--    *ngIf="displayTableSelectionSection"-->
+            <div class="row mt-4" >
+                <div class="col-lg-12">
+                    <div class="card-heading">
+                        <div class="row">
+                            <div class="col-lg-12" style="text-align: center">
+                                <h3>Select Your Table</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-card class="custom-card-body">
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="col-lg-4 mb-2" *ngFor="let table of tables; let i = index;">
+                                    <mat-card type="button" data-toggle="modal" [attr.data-target]="'#MyModal'+ i">
+                                        {{table.tableNumber}}
+                                    </mat-card>
+                                    <!-- Modal -->
+                                    <div class="modal fade" [attr.id]="'MyModal'+ i" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">{{table.tableNumber}} Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff;text-shadow: 0px 2px 3px rgba(0,0,0,0.4), 0px 4px 7px rgba(0,0,0,0.1), 0px 9px 12px rgba(0,0,0,0.1);">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="reservationCard">
+                                                        <div class="reservationCard__content">
+                                                            <div class="reservationCard__placePicture"></div>
+                                                            <div class="reservationCard__placeName">The Water Club</div>
+                                                            <div class="reservationCard__count count">
+                                                                <div class="count__title">Table For</div>
+                                                                <div class="count__counter">
+                                                                    <span id="count__number" class="count__number" data-number="2">{{ searchForm.get('paxCount').value}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="reservationCard__visitDate visitDate">
+                                                                <div class="visitDate__title">{{ searchForm.get('date').value}}</div>
+                                                                <div class="visitDate__date">{{ searchForm.get('timeSlot').value}}</div>
+                                                            </div>
+                                                            <hr>
+                                                            <button class="reservationCard__confirmation" data-dismiss="modal" (click)="goReservationDetails(searchForm.value, table.tableNumber)">Confirm</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+            </div>
+        </div>
+
+
+

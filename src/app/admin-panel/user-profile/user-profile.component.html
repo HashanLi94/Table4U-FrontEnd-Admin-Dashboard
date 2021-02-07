@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Manage Administrators</h4>
+                        <p class="card-category"> Admin Can Manage All the Bookings Here</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                <th>
+                                    Admin ID
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    last Name
+                                </th>
+                                <th>
+                                    Email Address
+                                </th>
+                                <th>
+                                    Contact Number
+                                </th>
+                                <th>
+                                    Nic
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                                </thead>
+                                <tbody *ngFor="let administrator of administrators">
+                                <tr>
+                                    <td>
+                                        {{administrator.userId}}
+                                    </td>
+                                    <td>
+                                        {{administrator.firstName}}
+                                    </td>
+                                    <td>
+                                        {{administrator.lastName}}
+                                    </td>
+                                    <td>
+                                        {{administrator.email}}
+                                    </td>
+                                    <td>
+                                        {{administrator.contactNo}}
+                                    </td>
+                                    <td>
+                                        {{administrator.nic}}
+                                    </td>
+                                    <td>
+                                        VIEW EDIT DELETE
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

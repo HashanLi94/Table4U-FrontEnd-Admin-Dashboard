@@ -1,0 +1,84 @@
+<script src="signup.component.ts"></script>
+<div class="container">
+    <div class="main sign-in">
+        <div class="card">
+            <div class="logo">
+
+            </div>
+            <div class="card-head" style="text-align: center">
+                <h3 class="header">Admin DashBoard</h3> <br>
+                <h3 class="header">Create an Account</h3>
+            </div>
+            <hr>
+            <div class="card-body">
+                <form [formGroup]="signUp" (ngSubmit)="onCreateNewAccount(signUp.value)">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">First Name <span style="color: red"> *</span> </label>
+                                <input class="form-control"  type="text" formControlName="firstName">
+                                <div style="color: red" *ngIf="signUp.get('firstName').invalid && signUp.get('firstName').touched ">
+                                    This Field is Required*
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name <span style="color: red"> *</span></label>
+                                <input class="form-control"  type="text" formControlName="lastName">
+                                <div style="color: red" *ngIf="signUp.get('lastName').invalid && signUp.get('lastName').touched ">
+                                    This Field is Required*
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">Email <span style="color: red"> *</span></label>
+                                <input class="form-control"  type="email" formControlName="email">
+                                <div style="color: red" *ngIf="signUp.get('email').invalid && signUp.get('email').touched ">
+                                    <div *ngIf="signUp.get('email').errors.required">This Field is Required*</div>
+                                    <div *ngIf="signUp.get('email').errors.email">Enter a Valid Email</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Password <span style="color: red"> *</span></label>
+                                <input class="form-control"  type="password" formControlName="password">
+                                <div style="color: red" *ngIf="signUp.get('password').invalid && signUp.get('password').touched ">
+                                    This Field is Required*
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">NIC <span style="color: red"> *</span></label>
+                                <input class="form-control" id="txtUsername" type="text" formControlName="nic">
+                                <div style="color: red" *ngIf="signUp.get('nic').invalid && signUp.get('nic').touched ">
+                                    This Field is Required*
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Contact Number <span style="color:red "> *</span></label>
+                                <input class="form-control" id="txtUsername" type="text" formControlName="number">
+                                <div style="color: red" *ngIf="signUp.get('number').invalid && signUp.get('number').touched ">
+                                    This Field is Required*
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group" style="text-align: center">
+                        <button type="submit" class="btn" id="btnSignIn"  [disabled]="signUp.invalid">Sign Up</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

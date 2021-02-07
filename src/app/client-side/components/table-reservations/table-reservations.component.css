@@ -1,0 +1,132 @@
+@import "../../client-side.css";
+
+.common-margin-top{
+    margin-top: 80px;
+}
+
+.modal-body{
+    padding: 0px !important;
+}
+
+.modal-header{
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color:#fff;
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.4), 0px 4px 7px rgba(0,0,0,0.1), 0px 9px 12px rgba(0,0,0,0.1);
+}
+
+/* Reservation Card Block */
+.reservationCard {
+    width: auto;
+    max-width: 100%;
+    height: 600px;
+    max-height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    padding: 35px;
+    background-color: #fff;
+    overflow: hidden;
+
+}
+
+
+
+.reservationCard__placePicture {
+    background: url('https://wwcdn.weddingwire.com/vendor/70001_75000/70046/thumbnails/800x800_1470672469571-img0946.jpg') center no-repeat;
+    background-size: cover;
+    width: 130px;
+    height: 130px;
+    margin: 25px auto;
+    border: 6px solid #474850;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px -2px #777;
+}
+
+.reservationCard__placeName {
+    font-size: 2em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.count, .visitDate {
+    margin: 25px 0;
+    font-size: 20px;
+    text-align: center;
+}
+.count__counter {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: space-between;
+    align-items: space-between;
+    margin-top: 10px;
+    height: 70px;
+    line-height: 70px;
+    color: #474850;
+}
+.count__number {
+    font-size: 70px;
+    font-weight: bold;
+    flex: 1;
+}
+
+
+.visitDate__date {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.reservationCard__confirmation {
+    display: block;
+    width: 150px;
+    max-width: 100%;
+    height: 50px;
+    background: #1e3c72;
+    margin: 0 auto;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 10px 25px -3px #777;
+    transition: all .3s ease;
+    border-radius: 20px;
+    Text-shadow: 0px 2px 3px rgba(0,0,0,0.4), 0px 4px 7px rgba(0,0,0,0.1), 0px 9px 12px rgba(0,0,0,0.1);
+}
+.reservationCard__confirmation:hover {
+    background: #1e3c72;
+    box-shadow: 0 5px 25px -3px #777;
+}
+
+@media (max-width: 479px) {
+    body {
+        padding: 0;
+    }
+    .reservationCard {
+        padding: 15px;
+    }
+    .reservationCard__placeName {
+        font-size: 1.5em;
+    }
+    .reservationCard__placePicture {
+        width: 100px;
+        height: 100px;
+    }
+    .count, .visitDate {
+        margin: 15px;
+    }
+    .count__counter {
+        height: 55px;
+        line-height: 55px;
+    }
+    .count__number {
+        font-size: 55px;
+    }
+    .visitDate__date {
+        margin-top: 10px;
+    }
+    .reservationCard__confirmation {
+        height: 40px;
+    }
+}
